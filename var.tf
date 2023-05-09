@@ -16,14 +16,8 @@ variable "vnet" {
 variable "subnet1" {
   type = string
 }
-variable "subnet2" {
-  type = string
-}
 
-variable "container_name" {
-  description = "Container's Name"
-  type        = string
-}
+
 
 variable "address_space" {
   type = list(any)
@@ -33,15 +27,16 @@ variable "address_prefixes1" {
   type = list(any)
 }
 
-variable "address_prefixes2" {
-  type = list(any)
-}
+
 
 variable "vm_name1" {
   type = string
 }
 
 variable "vm_name2" {
+  type = string
+}
+variable "vm_name3" {
   type = string
 }
 #variable "linux_vm_size" {
