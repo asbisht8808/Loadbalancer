@@ -52,7 +52,7 @@ resource "azurerm_windows_virtual_machine" "windowsvm01" {
 }
 
 resource "azurerm_linux_virtual_machine" "linuxvm02" {
-  name                            = var.vm_name1
+  name                            = var.vm_name3
   resource_group_name             = azurerm_resource_group.RG2.name
   location                        = azurerm_resource_group.RG2.location
   size                            = var.vm_size
