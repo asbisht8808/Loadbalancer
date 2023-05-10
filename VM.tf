@@ -6,6 +6,7 @@ resource "azurerm_linux_virtual_machine" "linuxvm01" {
   size                            = var.vm_size
   admin_username                  = "devopsadmin"
   admin_password                  = "P@ssw01rd@123"
+  custom_data = base64encode(file("install-nginx.sh"))
   disable_password_authentication = false
   network_interface_ids = [
     azurerm_network_interface.nic1.id,
@@ -58,6 +59,7 @@ resource "azurerm_linux_virtual_machine" "linuxvm02" {
   size                            = var.vm_size
   admin_username                  = "devopsadmin"
   admin_password                  = "P@ssw01rd@123"
+  custom_data = base64encode(file("install-nginx.sh"))
   disable_password_authentication = false
   network_interface_ids = [
     azurerm_network_interface.nic3.id,
