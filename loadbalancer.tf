@@ -32,7 +32,7 @@ resource "azurerm_lb_probe" "web_lb_probe" {
   protocol            = "Tcp"
   port                = 80
   loadbalancer_id     = azurerm_lb.web_lb.id
-  resource_group_name = azurerm_resource_group.RG2.name
+
 }
 
 # Resource-5: Create LB Rule
