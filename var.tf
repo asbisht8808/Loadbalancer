@@ -71,6 +71,6 @@ variable "vm_size" {
   type = string
 }
 
-variable "lb_name" {
-  type = string
-}
+# variable "lb_name" {
+#   type = string
+# }

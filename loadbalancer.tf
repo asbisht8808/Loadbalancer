@@ -1,6 +1,6 @@
 # Resource-1: Create Public IP Address for Azure Load Balancer
 resource "azurerm_public_ip" "web_lbpublicip" {
-  name                = var.lb_name
+  name                = "Devopslb"
   resource_group_name = azurerm_resource_group.RG2.name
   location            = azurerm_resource_group.RG2.location
   allocation_method   = "Static"
