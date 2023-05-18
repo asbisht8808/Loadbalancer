@@ -70,3 +70,7 @@ variable "account_replication_type" {
 variable "vm_size" {
   type = string
 }
+
+variable "lb_name" {
+  type = string
+}
