@@ -12,6 +12,29 @@ resource "azurerm_subnet" "subnet1" {
   address_prefixes     = var.address_prefixes1
 }
 
+resource "azurerm_network_security_group" "securitygp" {
+  name                = "security-nsg"
+  location            = azurerm_resource_group.RG2.location
+  resource_group_name = azurerm_resource_group.RG2.name
+
+  security_rule {
+    name                       = "test123"
+    priority                   = 100
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "*"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+}
+
+resource "azurerm_subnet_network_security_group_association" "secgpa" {
+  subnet_id                 = azurerm_subnet.subnet1.id
+  network_security_group_id = azurerm_network_security_group.securitygp.id
+}
+
 
 resource "azurerm_network_interface" "nic1" {
   name                = "Vm1_nic1"
