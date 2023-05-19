@@ -60,11 +60,11 @@ variable "storage_account_name" {
 }
 
 variable "account_tier" {
-    type = string
+  type = string
 }
 
 variable "account_replication_type" {
-    type = string  
+  type = string
 }
 
 variable "vm_size" {

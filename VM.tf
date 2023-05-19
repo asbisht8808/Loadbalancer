@@ -1,12 +1,13 @@
 
 resource "azurerm_linux_virtual_machine" "linuxvm01" {
-  name                            = var.vm_name1
-  resource_group_name             = azurerm_resource_group.RG2.name
-  location                        = azurerm_resource_group.RG2.location
-  size                            = var.vm_size
-  admin_username                  = "devopsadmin"
-  admin_password                  = "P@ssw01rd@123"
-  
+  name                = var.vm_name1
+  resource_group_name = azurerm_resource_group.RG2.name
+  location            = azurerm_resource_group.RG2.location
+  availability_set_id = azurerm_availability_set.avabilityzone.id
+  size                = var.vm_size
+  admin_username      = "devopsadmin"
+  admin_password      = "P@ssw01rd@123"
+
   disable_password_authentication = false
   network_interface_ids = [
     azurerm_network_interface.nic1.id,
@@ -53,13 +54,14 @@ resource "azurerm_windows_virtual_machine" "windowsvm01" {
 }
 
 resource "azurerm_linux_virtual_machine" "linuxvm02" {
-  name                            = var.vm_name3
-  resource_group_name             = azurerm_resource_group.RG2.name
-  location                        = azurerm_resource_group.RG2.location
-  size                            = var.vm_size
-  admin_username                  = "devopsadmin"
-  admin_password                  = "P@ssw01rd@123"
-  
+  name                = var.vm_name3
+  resource_group_name = azurerm_resource_group.RG2.name
+  location            = azurerm_resource_group.RG2.location
+  availability_set_id = azurerm_availability_set.avabilityzone.id
+  size                = var.vm_size
+  admin_username      = "devopsadmin"
+  admin_password      = "P@ssw01rd@123"
+
   disable_password_authentication = false
   network_interface_ids = [
     azurerm_network_interface.nic3.id,

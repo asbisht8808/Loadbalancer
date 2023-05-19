@@ -12,7 +12,7 @@ resource "azurerm_subnet" "subnet1" {
   address_prefixes     = var.address_prefixes1
 }
 
-resource "azurerm_network_security_group" "securitygp" {
+resource "azurerm_network_security_group" "sgnsg" {
   name                = "security-nsg"
   location            = azurerm_resource_group.RG2.location
   resource_group_name = azurerm_resource_group.RG2.name
@@ -30,9 +30,9 @@ resource "azurerm_network_security_group" "securitygp" {
   }
 }
 
-resource "azurerm_subnet_network_security_group_association" "secgpa" {
+resource "azurerm_subnet_network_security_group_association" "Sgassociation" {
   subnet_id                 = azurerm_subnet.subnet1.id
-  network_security_group_id = azurerm_network_security_group.securitygp.id
+  network_security_group_id = azurerm_network_security_group.sgnsg.id
 }
 
 
@@ -40,14 +40,14 @@ resource "azurerm_network_interface" "nic1" {
   name                = "Vm1_nic1"
   location            = azurerm_resource_group.RG2.location
   resource_group_name = azurerm_resource_group.RG2.name
-  
+
 
   ip_configuration {
     name                          = "internal"
     subnet_id                     = azurerm_subnet.subnet1.id
     private_ip_address_allocation = "Dynamic"
-   
-    
+
+
   }
 }
 
@@ -55,14 +55,14 @@ resource "azurerm_network_interface" "nic2" {
   name                = "Vm2_nic1"
   location            = azurerm_resource_group.RG2.location
   resource_group_name = azurerm_resource_group.RG2.name
-  depends_on                    = [azurerm_public_ip.pip1]
+  depends_on          = [azurerm_public_ip.pip1]
 
   ip_configuration {
     name                          = "internal"
     subnet_id                     = azurerm_subnet.subnet1.id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.pip1.id
-    
+
   }
 }
 
@@ -79,14 +79,14 @@ resource "azurerm_network_interface" "nic3" {
   name                = "Vm1_nic3"
   location            = azurerm_resource_group.RG2.location
   resource_group_name = azurerm_resource_group.RG2.name
-  
+
 
   ip_configuration {
     name                          = "internal"
     subnet_id                     = azurerm_subnet.subnet1.id
     private_ip_address_allocation = "Dynamic"
-   
-    
+
+
   }
 }
 
